@@ -71,7 +71,9 @@ var b_lnk = null;
 $('#ilbrowser').on('click',function(){
 	if(!PLYR.paused) toggleVid();
 	window.open(b_lnk, '_blank');
-  	window.focus();
+	window.focus();
+	// window.open(b_lnk, 'browser',"status = 1, height = 250, width = 450, resizable = 0");
+  	// alert('visit http://nickbriz.com/thoughtsonglitchart at home in order to fully explore all the linked URLs'); // FOR GALLERY INSTALL
 });
 
 
@@ -104,6 +106,7 @@ $('#ilnote').on('click',function(){
 	if(!PLYR.paused) toggleVid();
 	window.open(n_lnk, '_blank');
   	window.focus();
+  	// alert('visit http://nickbriz.com/thoughtsonglitchart at home in order to fully explore all the linked URLs'); // FOR GALLERY INSTALL
 });
 
 

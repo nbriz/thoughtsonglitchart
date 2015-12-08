@@ -1,0 +1,414 @@
+	/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+	html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+	body{margin:0}
+	article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+	audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+	audio:not([controls]){display:none;height:0}
+	[hidden],template{display:none}
+	a{background:transparent}
+	a:active,a:hover{outline:0}
+	abbr[title]{border-bottom:1px dotted}
+	dfn{font-style:italic}
+	h1{font-size:2em;margin:.67em 0}
+	mark{background:#ff0;color:#000}
+	small{font-size:80%}
+	sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+	sup{top:-.5em}
+	sub{bottom:-.25em}
+	img{border:0}
+	svg:not(:root){overflow:hidden}
+	figure{margin:1em 40px}
+	hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+	code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}
+	button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
+	button{overflow:visible}
+	button,select{text-transform:none}
+	button,html input[type=button],/* 1 */
+	input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:url(../images/cursor-hand.png),pointer}
+	button[disabled],html input[disabled]{cursor:default}
+	input{line-height:normal}
+	input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
+	input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
+	input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+	input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+	fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+	table{border-collapse:collapse;border-spacing:0}
+	td,th{padding:0}
+	b,strong,optgroup{font-weight:700}
+	pre,textarea{overflow:auto}
+	button::-moz-focus-inner,input::-moz-focus-inner,legend{border:0;padding:0}
+
+	/* ++++++++++++++++++++++++++++++++++++++++++ GENERAL ++++++++++++++++++++++++++++++++++++++++++ */
+	/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */	
+	@font-face {
+		font-family: Consolas,
+		src: url(Consolas.ttf);
+	}
+
+	body {
+		background: #000;
+		font-family: Consolas,monaco,monospace; 
+	}
+
+	#loadscreen {
+		position: fixed;
+		z-index: 99999999999;
+		width: 100%; height: 100%;
+		background: #000;
+		top:0px; left:0px;
+		color:#fff;
+	}
+
+	#loadscreen > div > p {
+		font-size: 12px;
+		margin:10px;
+		margin-top: 20px;
+		width:45%;
+		float:left;
+	}
+
+	.loader { position: relative; }
+	#loadingTxt{ 
+		text-align: left;
+		margin: 8px;
+		background: #1E1E1E;
+		padding: 7px;
+		color:#fff;
+	}
+	#loadingBG{
+		position: absolute;
+		width: 0px;
+		background-color: #fff;
+		top: 0px;
+		left: 8px;
+		padding: 7px;
+		color:#000;
+		overflow: hidden;
+	}
+
+	::-moz-selection { background:#000; color:#fff; text-shadow:none; }
+    ::selection { background:#000; color:#fff; text-shadow:none; }
+
+    a { color:#fff; }
+    a:hover { color:#fff; }
+
+	#splash {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 50%;
+		/*height: 50%;*/
+		background-color: rgb(0, 0, 0);
+		color: rgb(255, 255, 255);
+		margin-left: -25%;
+		/*margin-top: -12.5%;*/
+	}
+	#nfo { padding: 10px 25px; }
+	#nfo > h1 { 
+		text-align: center; 
+		font-weight: 100;
+	}
+	#nfo > .sections {
+		text-align: right;
+		font-size: 10px;
+	}
+	#nfo > p {
+		font-size: 12px;
+		margin:10px;
+	}
+
+	#title {
+		font-family: sans-serif;
+		font-weight: 700;
+		color: #FFF;
+		position: absolute;
+		z-index: 99999999999;
+		text-align: center;
+	}
+
+	#preloader {
+		width: 10px;
+		height: 10px;
+		overflow: hidden;
+		opacity: 0;
+		position: absolute;
+		z-index: -999;
+	}
+
+	#mobile {
+		color: rgb(255, 255, 255);
+		margin-top: 100px;
+		text-align: center;
+	}
+
+	#webgl {
+		position: fixed;
+		top:0px; left:0px;
+		z-index: -2;
+	}
+	
+
+	/* ++++++++++++++++++++++++++++++++++++++++++ DESKTOP ++++++++++++++++++++++++++++++++++++++++++ */
+	/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+	#bg {
+		background-image: url(../images/bg.jpg);
+		position: fixed;
+		top:0px; left:0px;
+		z-index: -1;
+		width: 100%; height: 100%;
+		padding: 20px;
+	}
+		
+		.file { 
+			margin: 10px; 
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			width: 53px;
+		}
+		.icon {
+			background: #000;
+			border: 1px solid #fff;
+			width:50px;
+			height: 60px;
+			border-radius: 0px 10px 0px 0px;
+		}
+		.app {
+			border-radius: 50px;
+			height: 50px;
+			color:#fff;
+			cursor: url(../images/cursor-hand.png),pointer;
+			/*background: url(../images/t.png);*/
+		}
+		.filename {
+			margin-top: 4px;
+			color: #fff;
+			background: #000;
+			width: 45px;
+			padding: 3px;
+			font-size: 12px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		/* ~~~~~~ context menu for icons ~~~~~~ */
+		
+		.ctxmenu {
+			position: absolute;
+			z-index: 9999999999; 
+			border: 1px solid #000;
+			border-bottom: 3px solid #000;
+			border-right: 4px solid #000;
+			background-color: #fff;
+			min-width: 100px;
+			min-height: 20px;
+		}
+			.ctxitem {
+				border-bottom: 1px solid #000;
+				padding: 4px;
+				cursor: url(../images/cursor-hand.png),pointer;
+			}
+			.ctxitem:hover{
+				color:#fff;
+				background-color: #000;
+			}
+			.ctxitem:active{
+				color:#fff;
+				background-color: #000;
+			}
+
+	/* ++++++++++++++++++++++++++++++++++++++++++ WINDOWS ++++++++++++++++++++++++++++++++++++++++++ */
+	/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+	#canvas { display: none; }
+	#editor { display: none; }
+	#audio { display: none; }
+	#video { display: none; }
+	#note { display: none; }
+	#guide { display: none; }
+	#browser { display: none; }
+	#conditional { display: none; }
+	#media { display: none; }
+
+	.win {
+		position: absolute;
+		left:100px;
+		top:100px;
+		background: #fff;
+		border: 1px solid #000;
+	}
+		/*---------------- TOP MENU BAR ------------------*/
+		.mbar {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			text-align: center;
+    		padding: 5px 0px;
+			background: #000;
+			color:#fff;
+			width: 100%;
+			cursor: url(../images/cursor-openhand.png),grab;
+		}
+		.mbar:active{ cursor: url(../images/cursor-closedhand.png),move; }
+			.close {
+				cursor: url(../images/cursor-hand.png),pointer;
+				float: left;
+				margin-left: 6px;
+				background-image: url("../images/close.png");
+				width: 15px;
+				height: 16px;
+			}
+			#saveEdit{
+				float:right;
+				padding-right:10px;
+				cursor: url(../images/cursor-hand.png),pointer;
+				height: 15px;
+			}
+			#toggleAudio {
+				float:right;
+				padding-right:10px;
+				cursor: url(../images/cursor-hand.png),pointer;
+			}
+
+
+		/*--------------- WIN BODY AREA -------------------*/
+		textarea { 
+			width: 100%; 
+			padding: 5px;
+			border:0px;
+		}
+
+		.overlay { background: #000; }
+
+		/* _______________________________/ editor \__ */
+		#editor{
+			position: absolute;
+		}
+		#textmirror-wrap {
+			position: absolute;
+			top:29px;
+			width: 100%;
+		}
+		#textmirror {
+			padding: 5px;
+			word-wrap: break-word;
+		}
+		.highlight { 
+			background: #000; color:#fff;
+		}
+		
+		/* _______________________________/ audio \__ */
+		#audio { position: absolute; }
+
+		/* _______________________________/ canvas \__ */
+		
+		#canvas{
+			position: absolute;
+			left:100px; top:50px;
+		}
+
+		#imagecanvas {
+			position: absolute;
+			left: 0px; top: 29px;
+		}
+
+		/* _______________________________/ video \__ */
+		#video{
+			background: #000;
+		}
+
+		#videoplayer {
+			position: absolute;
+			left:0px; top:29px;
+			background: #000;
+		}
+
+		/* ~~ controls ~~ */
+		#vidCntrls{
+			background: #000;
+			position: absolute;
+			width: 100%;
+			bottom: 9px;
+			opacity: 0.2;
+		}
+		#vidPlay {
+			background-image: url(../images/pauseplay.png);
+			background-position: -26px 0;
+			width: 24px; height: 30px;
+			margin:8px;
+			cursor: url(../images/cursor-hand.png),pointer;
+		}
+		#vidProg {
+			background: #333;
+			width:538px; height:20px;
+			position: absolute;
+			left:44px; top:13px;
+			cursor: url(../images/cursor-hand.png),pointer;
+
+		}
+		#vidTime {
+			background: #fff;
+			width:1px; height:20px;
+			position: absolute;
+			left:0px; top:0px;
+		}
+
+		.loading {
+			width: 64px; height: 64px;
+			position: absolute;
+			top: 50%; left:50%;
+			margin-top:-34px; margin-left: -34px;
+			background-image: url(../images/loader.gif);
+			opacity: 0.3;
+			display: none;
+		}
+		
+		/* _______________________________/ browser && note \__ */
+
+		#note { background: #000; }
+		#browser { background: #000; }
+
+		#bframe {
+			position: absolute;
+			left:0px; top:29px;
+		}
+
+		.imglayer { /*prevent from being able to drag images*/
+			background: #000;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 29px;
+			left: 0px;
+			opacity: 0;
+			cursor: url(../images/cursor-hand.png),pointer;
+		}
+
+		/* _______________________________/ conditional \__ */
+
+		#con_stat {
+			padding: 20px; 
+			font-size: 45px;
+		}
+
+		/* _______________________________/ guide \__ */
+
+		#guidemenu {
+			border: 1px solid #000;
+			border-bottom: 3px solid #000;
+			border-right: 4px solid #000;
+			background-color: #fff;	
+		}
+			#guidemenu > div { font-size: 12px; }
+		
+
+
+
+

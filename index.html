@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Thoughts On Glitch[Art]v2.0 </title>
+		<meta charset="utf-8">
+		<meta name="description" content="Thoughts on Glitch[Art]v2.0 is a hypermedia essay on the subject of glitch art.">
+		<meta name="author" content="Nick Briz">
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+
+
+		<div id="splash">
+			<div id="nfo">
+				<h1>Thoughts On Glitch[Art]v2.0</h1>
+				<div class="sections">
+					0 ........................... whois ( preface ) <br>
+					1 ........................... how to glitch art <br>
+					2 ....... definitions && conditional statements <br>
+					3 .................... the politix in/of glitch <br>
+					4 ............. the practice of everyday glitch <br>
+				</div>
+				<p>
+					Thoughts on Glitch[Art]v2.0 is a hypermedia essay ( a follow up from my 2009 hypertext essay <a href="http://nickbriz.com/glitchwebessay.html" target="_blank">THOUGHTS ON GLITCH[ART]v1.0</a>  no longer functional, i’ll get around to fix’n it eventually ), if this doesn’t seem to work on ur system ( this is optimized for <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">firefox</a> ) u can watch a hypermedia-ish screen recording on YouTube. here's a <a href="thoughtsonglitchartv2.0.pdf" target="_blank">pdf-version</a> of the essay. src-code available on <a href="https://github.com/nbriz/thoughtsonglitchart" target="_blank">github</a>. copy&lt;it&gt;right 2015
+				</p>
+				<p>
+					INSTRUCTIONS: u can start the essay by clicking the “video” icon at the top-left corner of the screen; click spacebar to start/stop ( or use the video play/pause button ), u can scrub the progress bar to skip through the video && use the video guide to jump to another chapter. make sure ur volume is up. this essay is in perpetual-beta, leave any questions/bugs/comments here.
+				</p>
+			</div>
+		</div>
+
+		
+		<!-- ++++++++++++++++++++++++++++++++ DESKTOP && ICONS ++++++++++++++++++++++++++++++++ -->
+
+		<div id="bg">
+
+			<div class="file">
+				<div class="icon app"></div>
+				<div class="filename">video</div>
+			</div>
+			
+			<div class="file" style="display:none;">
+				<div class="icon app"></div>
+				<div class="filename">guide</div>
+			</div>
+
+			<!-- dragged && dropped files will be added here  -->
+
+		</div>
+
+		<!-- +++++++++++++++++++++++++++++++++++++ WINDOWS ++++++++++++++++++++++++++++++++++++ -->
+
+		<!-- TEXT EDITOR -->
+		<div class="win" id="editor" data-filename="cat.jpg" style="z-index:1">
+			<div class="mbar"> <span class="close"></span> editor <img src="images/save.png" id="saveEdit"> </div>
+			<textarea autocomplete="off"></textarea>
+			<div id="textmirror-wrap"><div id="textmirror"></div></div>
+		</div>
+		
+		<!-- CANVAS VIEWER -->
+		<div class="win" id="canvas" style="z-index:1">
+			<div class="mbar"><span class="close"></span> canvas </div>
+			<textarea class="overlay"></textarea>
+			<canvas id="imagecanvas"></canvas>
+		</div>
+
+		<!-- AUDIO PLAYER -->
+		<div class="win" id="audio" data-audio="null" style="z-index:1">
+			<div class="mbar"><span class="close"></span> audio <span id="toggleAudio">◼</span>  </div>
+			<canvas id="audiocanvas"></canvas>
+		</div>
+
+		<!-- VIDEO PLAYER -->
+		<div class="win" id="video" style="z-index:1">
+			<div class="mbar"><span class="close"></span> video </div>
+			<textarea class="overlay" style="width:600px;height:338px"></textarea>
+			<video id="videoplayer" src="videos/whois.mp4" preload></video>
+			<div id="vidCntrls">
+				<div id="vidPlay"></div>
+				<div id="vidProg"><div id="vidTime"></div></div>
+			</div>
+			<div class="loading"></div>
+		</div>
+
+		<!-- NOTE -->
+		<div class="win" id="note" style="z-index:1">
+			<div class="mbar"><span class="close"></span> note </div>
+			<img src="" id="npic">
+			<div class="imglayer" id="ilnote"></div>
+		</div>
+
+		<!-- BROWSER -->
+		<div class="win" id="browser" style="z-index:1">
+			<div class="mbar"><span class="close"></span> browser </div>
+			<!-- <textarea class="overlay" style="width:600px;height:350px;background-color:#fff"></textarea> -->
+			<!-- <iframe src="" frameborder="0" id="bframe"></iframe> -->
+			<img src="" id="bpic">
+			<div class="imglayer" id="ilbrowser"></div>
+		</div>
+
+		<!-- CONDITIONAL -->
+		<div class="win" id="conditional" style="z-index:1">
+			<div class="mbar"> conditional </div>
+			<div id="con_stat"> glitch != error </div>
+		</div>
+
+		<!-- MEDIA -->
+		<div class="win" id="media" style="z-index:1">
+			<div class="mbar"> media </div>
+			<video id="mediaplayer" src="videos/iPad.mp4" preload></video>
+		</div>
+
+		<!-- GUIDE -->
+		<div class="win" id="guide" style="z-index:1">
+			<div class="mbar"><span class="close"></span> guide </div>
+			<div id="guidemenu">
+				<div class="ctxitem"> 0 ...................... whois ( preface )</div>
+				<div class="ctxitem"> 1 ...................... how to glitch art</div>
+				<div class="ctxitem"> 2 .. definitions && conditional statements</div>
+				<div class="ctxitem"> 3 ............... the politix in/of glitch</div>
+				<div class="ctxitem"> 4 ........ the practice of everyday glitch</div>
+			</div>
+		</div>
+
+		<!-- +++++++++++++++++++++++++++++++++++++ JS && LOADING STUFFS ++++++++++++++++++++++++++++++++++++ -->
+		
+		<div id="loadscreen">
+			<div id="nfo" style="width: 50%;margin-left: 25%;margin-top: 10%;">
+				<h1>Thoughts On Glitch[Art]v2.0</h1>
+				<div class="loader">
+					<div id="loadingTxt">LOADING</div>	
+					<div id="loadingBG">LOADING</div>
+				</div>
+				<p>
+					Thoughts on Glitch[Art]v2.0 is a hypermedia essay ( a follow up from my 2009 hypertext essay <a href="http://nickbriz.com/glitchwebessay.html" target="_blank">THOUGHTS ON GLITCH[ART]v1.0</a>  no longer functional, i’ll get around to fix’n it eventually ), if this gets stuck loading try refreshing ur browser, if this doesn’t seem to work on ur system ( this is optimized for <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">firefox</a> ) u can watch a hypermedia-ish screen recording on YouTube. here's a <a href="thoughtsonglitchartv2.0.pdf" target="_blank">pdf-version</a> of the essay. src-code available on <a href="https://github.com/nbriz/thoughtsonglitchart" target="_blank">github</a>. copy&lt;it&gt;right 2015
+				</p>
+				<p>
+					INSTRUCTIONS: u can start the essay by clicking the “video” icon at the top-left corner of the screen; click spacebar to start/stop ( or use the video play/pause button ), u can scrub the progress bar to skip through the video && use the video guide to jump to another chapter. make sure ur volume is up. this essay is in perpetual-beta, leave any questions/bugs/comments here.
+				</p>			
+			</div>	
+		</div>
+
+		<div id="preloader">
+			<video id="load_vid1"></video>
+			<video id="load_vid2"></video>
+			<video id="load_vid3"></video>
+			<video id="load_vid4"></video>
+		</div>
+
+		<script src="js/libs/jquery-1.11.1.min.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/dnd.js"></script>
+		<script src="js/windowing.js"></script>
+		<script src="js/canvas.js"></script>
+		<script src="js/audio.js"></script>
+		<script src="js/databend.js"></script>
+		<script src="js/timeline.js"></script>
+		<script>
+
+			var imgs = ["advisors.png","antonio.jpg","antonio1.gif","apple.png","apple1.png","apple2.png","are.png","artifacts.png","ben1.png","ben2.png","benjamin.png","benjamingoulon.jpg","bg.jpg","bleed.png","brakhage.png","cat.jpg","ceibas.png","chance.png","chaplan.png","chicago.gif","cloninger.gif","close.png","cursor-closedhand.png","cursor-hand.png","cursor-openhand.png","curtquote.png","databending.png","datamoshing.png","diff_app1.png","diff_app2.png","diff_app3.png","doc.png","ellan.png","entropy.png","evan.jpg","failure.png","feminism.png","flickr.png","formats.png","furniture.png","gct.png","gifs.png","glidottcslashh.png","glitchartdef.png","glitchr.jpg","glitchr.png","glitchsafari.png","googlebooks.png","histories.png","howto1.png","howto2.png","howto3.png","howto4.png","howto5.png","howto6.png","installation.png","jeffdonaldson.jpg","jodi.png","jpg.png","karaoke.png","loader.gif","manifesto.png","many.png","mcluhan.png","mcluhan1.png","medialive.png","memory.png","mosher.png","nelson.png","ngram.png","nostalgia.png","oldglitch.png","pauseplay.png","pdf.png","perform.png","politix1.png","politix2.png","prints.png","psycadelic.png","refrag.png","rosa.jpg","satrom.jpg","save.png","software.png","stallio.jpg","tactical.jpg","textiles.png","though.png","time.png","tutorial.png","txt.png","ucnv.png","ucnv1.png","ucnv2.png","ullman.png","unfamiliar.png","vernacular.png","videos.png","wall.png","wikidef.png","wikinew.png","wikiold.png","wwf.png","zakas.png","zakasquote.png","zalgo.png"];
+			var loadCntr = 0;
+			for (var i = 0; i < imgs.length; i++) {
+				var pic = new Image();
+					pic.onload = function(){
+						var w = $('#loadingBG').width();
+						var inc = $('#loadingTxt').width()/imgs.length;
+						$('#loadingBG').css('width', w+inc +"px");
+						loadCntr++
+					}
+					pic.src = "images/"+imgs[i];
+			};
+
+			var USE = 'mp4';
+			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)){
+			    window.location = window.location+"/mobile.html";
+			} else if( navigator.browserInfo.browser == "Firefox" ){
+				USE = 'ogv';
+				PLYR.src = "videos/whois.ogv";
+			}
+
+			function sizeSplash(){
+				if($('#splash').css('display')!='none')
+					$('#splash').css('top',window.innerHeight/2 - $('#splash').height()/2 +"px");
+			}
+			$( window ).resize(sizeSplash);
+			sizeSplash();
+
+			var loadingLoop = setInterval(function(){
+				if (loadCntr>=imgs.length-1) {
+					clearInterval(loadingLoop);
+					$('#loadscreen').fadeOut();
+					var load_vids = [null,"howto","definitions","politix","everyday_glitch"];
+					for (var i = 1; i < 5; i++) {
+						$('#load_vid'+i).attr('src','videos/'+load_vids[i]+'.'+USE);
+						$('#load_vid'+i).attr('preload','true');
+						// $('#load_vid'+i)[0].play();
+						// $('#load_vid'+i)[0].volume=0;
+					};
+					if(USE=="ogv") $('#mediaplayer').attr('src','videos/iPad.ogv');
+				}
+			},250);
+
+		</script>
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-17480694-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+	</body>
+</html>

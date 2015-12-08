@@ -87,7 +87,7 @@ function newNote( img, url, L, T, diffPos ){
 			var left = parseInt($('#video').css('left')) - $('#npic').width()/2 + l;
 			var top = parseInt($('#video').css('top')) + $('#video').height() - $('#npic').height()/2 + t;
 			// adjust if off screen
-			if( left <= 0 ) left = 0;
+			if( left <= 0 ) left = 10;
 			if( top+$('#note').height() >= window.innerHeight ) top = window.innerHeight-$('#note').height() - 10;
 			
 			$('#note').css({
@@ -166,6 +166,7 @@ function toggleVid(){
 }
 
 function jumpTo( sec ){
+	if( CH > 4 ) CH = 4;
 	for (var i = 0; i < pnts[CH].length; i++) {
 		if( pnts[CH][i].type == "closer" ) pnts[CH][i].exec(); // close any open wins
 		if( pnts[CH][i].time > sec ) pnts[CH][i].ran = false;  // reset anything yet to come
@@ -194,6 +195,7 @@ function progBarUpdate( x ){
 function videoLoop(){
 	resizeWin( 'video', 'videoplayer' );
 	// resizeWin( 'browser', 'bframe' );
+	if( pnts[CH] > 4 ) end();
 	
 	for (var i = 0; i < pnts[CH].length; i++) {
 		if( PLYR.currentTime >= pnts[CH][i].time && PLYR.currentTime <= pnts[CH][i].time+1 && pnts[CH][i].ran==false )
@@ -500,7 +502,18 @@ var pnts = [
 				this.ran = true;
 				bringToFront('#video');
 			}
+		},
+		{
+			time: 106,
+			ran: false,
+			type: 'closer',
+			exec: function(){
+				this.ran = true;
+				$('#browser').fadeOut();
+				$('#note').fadeOut();
+			}
 		}
+
 	],
 	[ // .......................................................................................................................................... howto
 		{
@@ -773,6 +786,24 @@ var pnts = [
 			exec: function(){
 				this.ran = true;
 				doConStat('glitch == unexpected');
+			}
+		},
+		{
+			time: 96.06, // def
+			ran: false,
+			type: 'opener',
+			exec: function(){
+				this.ran = true;
+				newNote('glitchdef.png','#');				
+			}
+		},
+		{
+			time: 104.23, // close
+			ran: false,
+			type: 'closer',
+			exec: function(){
+				this.ran = true;
+				$('#note').fadeOut();			
 			}
 		},
 		{
@@ -1925,7 +1956,7 @@ var pnts = [
 
 
 function end(){
-
+ location.reload();
 }
 
 
